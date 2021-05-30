@@ -1,4 +1,4 @@
-# nse-premarket-data
+# download nse pre-market data
 premarketdata
 
 
