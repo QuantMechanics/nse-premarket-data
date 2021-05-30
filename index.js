@@ -13,9 +13,7 @@ const csvWriter = createCsvWriter({
       {id: 'yearLow', title: 'yearLow'},
       {id: 'iep', title: 'iep'},
       {id: 'purpose', title: 'purpose'},
-      {id: 'marketCap', title: 'marketCap'},
-
-
+      {id: 'marketCap', title: 'marketCap'}
     ]
   });
 
@@ -52,13 +50,10 @@ let run_date= dt.getDate()+'-'+(dt.getMonth()+1)+'-'+dt.getFullYear();
     } else {
       await request.continue()
     }
-  })
-//   await page.setViewport({ width: 1280, height: 800 })
+  });
   await page.goto('https://www.nseindia.com/market-data/pre-open-market-cm-and-emerge-market',{waitUntil:'domcontentloaded'})
   await page.goto('https://www.nseindia.com/api/market-data-pre-open?key=FO',{waitUntil:'domcontentloaded'})
 
-
-//   await page.select('#select-pre select', 'FO')
 let bodyHTML = await page.evaluate(() => document.body.textContent);
 
 json_data= JSON.parse(bodyHTML)
@@ -72,18 +67,9 @@ json_data['data'].forEach(element => {
     final_data.push(element['metadata'])
     
 });
-//  console.log(final_data)
-
 
  csvWriter
  .writeRecords(final_data)
  .then(()=> console.log('pre_market_data saved : '+run_date));
-//   await page.waitForSelector('#livePreTable')
-//   await page.on('response', async (response) => {    
-//             data =await response.json();
-//             console.log(data)
-//     }); 
-  // await page.screenshot({ path: 'nytimes.png', fullPage: true })
-  
   await browser.close()
 })()
