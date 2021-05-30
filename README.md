@@ -19,3 +19,5 @@ Once all done here the comes <b>main</main> part to run the code
 ``` node index.js```
 
 Hint: You can automate this code via task schedular(windows) or crontab (Linux/Ubuntu)
+
+The above code is in particular for doing automation in cloud or you simply achieve the same using requests module in python
