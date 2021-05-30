@@ -22,7 +22,10 @@ const dt = new Date();
 let run_date= dt.getDate()+'-'+(dt.getMonth()+1)+'-'+dt.getFullYear();
 
 (async () => {
-  const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox']});
+  // below arguments in launch may cause an issue if you're running in windows sys.
+  // so you could also try as
+  // const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox']});  
+  const browser = await puppeteer.launch();
   const page = await browser.newPage()
   await page.setViewport({ width: 1280, height: 800 })
   await page.setRequestInterception(true)
