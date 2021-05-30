@@ -3,7 +3,7 @@ const { PendingXHR } = require('pending-xhr-puppeteer');
 const { Parser } = require('json2csv');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
-    path: '/root/algotasks/nsebtSandbox/pre_data.csv',
+    path: '/root/algo/pre_data.csv',
     header: [
       {id: 'symbol', title: 'symbol'},
       {id: 'previousClose', title: 'previousClose'},
